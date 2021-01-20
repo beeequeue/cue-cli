@@ -9,7 +9,6 @@ const config: DenonConfig = {
   scripts: {
     dev: {
       cmd: "deno run mod.ts",
-      watch: false,
     },
   },
 };
