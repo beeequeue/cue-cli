@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "strict": true,
+    "allowJs": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "inlineSourceMap": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "lib": [
+      "deno.window",
+      "deno.unstable"
+    ]
+  }
+}
