@@ -11,7 +11,7 @@ export const runCommand = async () => {
 
   console.log({ args, options });
 
-  const decoder = new TextDecoder("utf-8")
-  const buffer = await Deno.readFile(args[0])
-  const contents = decoder.decode(buffer).trim()
-}
+  const decoder = new TextDecoder("utf-8");
+  const buffer = await Deno.readFile(args[0]);
+  const contents = decoder.decode(buffer).trim();
+};

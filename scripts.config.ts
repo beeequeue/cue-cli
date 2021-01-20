@@ -5,6 +5,7 @@ const config: DenonConfig = {
     read: true,
   },
   unstable: true,
+  inspect: "9229",
 
   scripts: {
     dev: {
