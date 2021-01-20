@@ -1,14 +1,12 @@
 import { Command } from "./deps.ts";
 
-type Options = {
-  source?: string;
-};
-
-const { options } = await new Command<Options>()
+const { args, options } = await new Command<{ source?: string }>()
   .name("cue-cli")
   .description("CLI for splitting audio files according to .cue files.")
-  .arguments("<file>")
-  .option("-s, --source <file>", "Override the file to split.")
+  .type("filepath", (input) => Deno.realPathSync(input.value))
+  .arguments("<file:filepath>")
+  .option("-s, --source <file:filepath>", "Override the file to split.")
   .parse(Deno.args);
 
-console.log(options);
+console.log({ args, options });
+
