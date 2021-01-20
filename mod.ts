@@ -4,7 +4,7 @@ type Options = {
   source?: string;
 };
 
-const { options } = await new Command()
+const { options } = await new Command<Options>()
   .name("cue-cli")
   .description("CLI for splitting audio files according to .cue files.")
   .arguments("<file>")
