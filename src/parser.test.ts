@@ -1,5 +1,5 @@
 import { assertEquals } from "../devDeps.ts";
-import { getCommand, parseCue, parseLine } from "./parser.ts";
+import { getCommand, parseCue, parseLine, parsePosition } from "./parser.ts";
 import { BaseCommand, Cue } from "./parser.types.ts";
 
 const exampleFile = `
@@ -188,4 +188,22 @@ Deno.test("getCommand / returns correct command", () => {
       },
     ],
   } as Cue);
+});
+
+Deno.test("parsePosition / parses position to timestamp", () => {
+  const positions = [
+    "00:00:00",
+    "01:23:00",
+    "12:34:01",
+    "12:34:36",
+    "12:34:74",
+  ];
+
+  assertEquals(positions.map(parsePosition), [
+    "00:00",
+    "01:23",
+    "12:34.13",
+    "12:34.48",
+    "12:34.98",
+  ]);
 });

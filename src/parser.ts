@@ -1,4 +1,5 @@
 import { BaseCommand, Command, Cue } from "./parser.types.ts";
+import { isNotFalsy } from "./utils.ts";
 
 export const getCommand = (input: BaseCommand): Command => {
   switch (input.name as Command["name"]) {
@@ -52,6 +53,24 @@ export const getCommand = (input: BaseCommand): Command => {
         value: input.args[1],
       };
   }
+};
+
+const frameDuration = 10000 / 75;
+
+export const parsePosition = (position: string): string => {
+  const [, minutes, seconds, frames] =
+    /(\d{1,4}):(\d{1,2}):(\d{1,2})/.exec(position) ?? [];
+  const milliseconds = Number(
+    (Number(frames) * frameDuration).toFixed(0).slice(0, 2),
+  );
+
+  let timestamp = `${minutes}:${seconds}`;
+
+  if (milliseconds > 0) {
+    timestamp += `.${milliseconds}`;
+  }
+
+  return timestamp;
 };
 
 export const parseLine = (line: string): BaseCommand => {
@@ -122,14 +141,14 @@ export const parseCue = (content: string): Cue => {
         break;
 
       case "TRACK":
-        currentFile = cue.files.length;
+        currentFile = command.index - 1;
 
         cue.files[currentFile] ??= {} as any;
         cue.files[currentFile].source = currentSource!;
         break;
 
       case "INDEX":
-        cue.files[currentFile!].start = command.start;
+        cue.files[currentFile!].start = parsePosition(command.start);
         break;
 
       case "TITLE":
@@ -148,6 +167,8 @@ export const parseCue = (content: string): Cue => {
         break;
     }
   }
+
+  cue.files = cue.files.filter(isNotFalsy);
 
   return cue;
 };
