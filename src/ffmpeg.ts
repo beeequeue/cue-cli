@@ -12,7 +12,7 @@ export const ffmpegSplitFile = async (
   }
 
   const promises = cue.files.map(async (file, index) => {
-    const realSource = source ?? file.source
+    const realSource = source ?? file.source;
     const nextFile = cue.files[index + 1];
 
     const outputExtension = Path.extname(realSource);
