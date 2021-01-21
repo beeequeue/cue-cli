@@ -1,6 +1,7 @@
 import { exists, Path } from "../deps.ts";
 import { Cue } from "./parser.types.ts";
 import { Options } from "./command.ts";
+import { isNotFalsy } from "./utils.ts";
 
 const mp3Options = [
   ["-b:a", "320k"],
@@ -29,7 +30,7 @@ export const ffmpegSplitFile = async (
       ["-i", source ?? await Deno.realPath(file.source)],
       outputExtension === ".mp3" && mp3Options,
       outputFilePath,
-    ].flat().filter(Boolean);
+    ].flat(2).filter(isNotFalsy);
     console.log("Running:\n" + cmd.join(" "));
 
     const process = Deno.run({
