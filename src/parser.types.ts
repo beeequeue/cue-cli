@@ -23,50 +23,50 @@ export type BaseCommand = {
   args: string[];
 };
 
-type FILE = BaseCommand & {
+type FILE = {
   name: "FILE";
   fileName: string;
   type: string;
 };
 
-type TRACK = BaseCommand & {
+type TRACK = {
   name: "TRACK";
   index: number;
   type: string;
 };
 
-type INDEX = BaseCommand & {
+type INDEX = {
   name: "INDEX";
   index: number;
   start: string;
 };
 
-type TITLE = BaseCommand & {
+type TITLE = {
   name: "TITLE";
   title: string;
 };
 
-type PERFORMER = BaseCommand & {
+type PERFORMER = {
   name: "PERFORMER";
   artist: string;
 };
 
-type SONGWRITER = BaseCommand & {
+type SONGWRITER = {
   name: "SONGWRITER";
   composer: string;
 };
 
-type CATALOG = BaseCommand & {
+type CATALOG = {
   name: "CATALOG";
   code: string;
 };
 
-type ISRC = BaseCommand & {
+type ISRC = {
   name: "ISRC";
   isrc: string;
 };
 
-type REM = BaseCommand & {
+type REM = {
   name: "REM";
   key: string;
   value: string;

@@ -75,51 +75,29 @@ Deno.test("parseLine / parses quoted strings correctly", () => {
 Deno.test("getCommand / returns correct command", () => {
   assertEquals(exampleCommands.map(getCommand), [
     {
-      args: [
-        "GENRE",
-        "Electronica",
-      ],
       name: "REM",
       key: "GENRE",
       value: "Electronica",
     },
     {
-      args: [
-        "DATE",
-        "1998",
-      ],
       name: "REM",
       key: "DATE",
       value: "1998",
     },
     {
-      args: [
-        "COMMENT",
-        "ExactAudioCopy v1.3",
-      ],
       name: "REM",
       key: "COMMENT",
       value: "ExactAudioCopy v1.3",
     },
     {
-      args: [
-        "Faithless",
-      ],
       name: "PERFORMER",
       artist: "Faithless",
     },
     {
-      args: [
-        "Live in Berlin",
-      ],
       name: "TITLE",
       title: "Live in Berlin",
     },
     {
-      args: [
-        "Faithless - Live in Berlin.mp3",
-        "MP3",
-      ],
       name: "FILE",
       fileName: [
         "Faithless",
@@ -131,33 +109,19 @@ Deno.test("getCommand / returns correct command", () => {
       type: "MP3",
     },
     {
-      args: [
-        "01",
-        "AUDIO",
-      ],
       name: "TRACK",
       index: 1,
       type: "AUDIO",
     },
     {
-      args: [
-        "Reverence",
-      ],
       name: "TITLE",
       title: "Reverence",
     },
     {
-      args: [
-        "Faithless",
-      ],
       name: "PERFORMER",
       artist: "Faithless",
     },
     {
-      args: [
-        "COMPOSER",
-        "doriko",
-      ],
       name: "REM",
       key: "COMPOSER",
       value: "doriko",

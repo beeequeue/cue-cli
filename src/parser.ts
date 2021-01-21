@@ -4,60 +4,42 @@ export const getCommand = (input: BaseCommand): Command => {
   switch (input.name as Command["name"]) {
     case "FILE":
       return {
-        name: "FILE",
-        args: input.args,
-        fileName: input.args[0],
+        name: "FILE",fileName: input.args[0],
         type: input.args[1],
       };
     case "TRACK":
       return {
-        name: "TRACK",
-        args: input.args,
-        index: Number(input.args[0]),
+        name: "TRACK",index: Number(input.args[0]),
         type: input.args[1],
       };
     case "INDEX":
       return {
-        name: "INDEX",
-        args: input.args,
-        index: Number(input.args[0]),
+        name: "INDEX",index: Number(input.args[0]),
         start: input.args[1],
       };
     case "TITLE":
       return {
-        name: "TITLE",
-        args: input.args,
-        title: input.args[0],
+        name: "TITLE",title: input.args[0],
       };
     case "PERFORMER":
       return {
-        name: "PERFORMER",
-        args: input.args,
-        artist: input.args[0],
+        name: "PERFORMER",artist: input.args[0],
       };
     case "SONGWRITER":
       return {
-        name: "SONGWRITER",
-        args: input.args,
-        composer: input.args[0],
+        name: "SONGWRITER",composer: input.args[0],
       };
     case "CATALOG":
       return {
-        name: "CATALOG",
-        args: input.args,
-        code: input.args[0],
+        name: "CATALOG",code: input.args[0],
       };
     case "ISRC":
       return {
-        name: "ISRC",
-        args: input.args,
-        isrc: input.args[0],
+        name: "ISRC",isrc: input.args[0],
       };
     case "REM":
       return {
-        name: "REM",
-        args: input.args,
-        key: input.args[0],
+        name: "REM",key: input.args[0],
         value: input.args[1],
       };
   }
