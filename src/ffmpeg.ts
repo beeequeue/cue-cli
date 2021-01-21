@@ -12,9 +12,10 @@ export const ffmpegSplitFile = async (
   }
 
   const promises = cue.files.map(async (file, index) => {
+    const realSource = source ?? file.source
     const nextFile = cue.files[index + 1];
 
-    const outputExtension = Path.extname(file.source);
+    const outputExtension = Path.extname(realSource);
     const outputFilePath = Path.join(
       output,
       `${index + 1} - ${file.artist} - ${file.title}${outputExtension}`,
@@ -25,7 +26,7 @@ export const ffmpegSplitFile = async (
       "-y",
       "-hide_banner",
       ["-loglevel", "warning"],
-      ["-i", source ?? await Deno.realPath(file.source)],
+      ["-i", source ?? await Deno.realPath(realSource)],
       ["-c:a", "copy"],
       ["-ss", file.start],
       nextFile != null && ["-to", nextFile.start],

@@ -33,14 +33,16 @@ export const runCommand = async () => {
 
   const cue = parseCue(contents);
 
-  let lastSource = "";
-  try {
-    cue.files.forEach(({ source }) => {
-      lastSource = source;
-      Deno.realPathSync(source);
-    });
-  } catch {
-    throw new Error(`Could not find the source file (${lastSource})`);
+  if (options.source == null) {
+    let lastSource = "";
+    try {
+      cue.files.forEach(({ source }) => {
+        lastSource = source;
+        Deno.realPathSync(source);
+      });
+    } catch {
+      throw new Error(`Could not find the source file (${lastSource})`);
+    }
   }
 
   await ffmpegSplitFile(cue, options);
