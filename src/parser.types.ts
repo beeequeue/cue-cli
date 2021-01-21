@@ -1,11 +1,3 @@
-type CueFile = {
-  title?: string;
-  artist?: string;
-  composer?: string;
-  isrc?: string;
-  start: string;
-};
-
 export type Cue = {
   title?: string;
   artist?: string;
@@ -13,9 +5,18 @@ export type Cue = {
   discId?: string;
   catalog?: number;
   comment?: string;
-  date?: Date;
+  date?: string;
+  files: CueFile[];
+};
 
-  files: CueFile;
+type CueFile = {
+  title?: string;
+  artist?: string;
+  composer?: string;
+  isrc?: string;
+
+  source: string;
+  start: string;
 };
 
 export type BaseCommand = {

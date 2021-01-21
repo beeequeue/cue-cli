@@ -1,6 +1,6 @@
 import { assertEquals } from "../devDeps.ts";
-import { getCommand, parseLine } from "./parser.ts";
-import { BaseCommand } from "./parser.types.ts";
+import { getCommand, parseCue, parseLine } from "./parser.ts";
+import { BaseCommand, Cue } from "./parser.types.ts";
 
 const exampleFile = `
 REM GENRE Electronica
@@ -127,4 +127,65 @@ Deno.test("getCommand / returns correct command", () => {
       value: "doriko",
     },
   ]);
+});
+
+Deno.test("getCommand / returns correct command", () => {
+  assertEquals(parseCue(exampleFile), {
+    title: "Live in Berlin",
+    artist: "Faithless",
+    genre: "Electronica",
+    date: "1998",
+    comment: "ExactAudioCopy v1.3",
+    files: [
+      {
+        title: "Reverence",
+        artist: "Faithless",
+        composer: "doriko",
+        source: "Faithless - Live in Berlin.mp3",
+        start: "00:00:00",
+      },
+      {
+        artist: "Faithless",
+        source: "Faithless - Live in Berlin.mp3",
+        start: "06:42:00",
+        title: "She's My Baby",
+      },
+      {
+        artist: "Faithless",
+        source: "Faithless - Live in Berlin.mp3",
+        start: "10:54:00",
+        title: "Take the Long Way Home",
+      },
+      {
+        artist: "Faithless",
+        source: "Faithless - Live in Berlin.mp3",
+        start: "17:04:00",
+        title: "Insomnia",
+      },
+      {
+        artist: "Faithless",
+        source: "Faithless - Live in Berlin.mp3",
+        start: "25:44:00",
+        title: "Bring the Family Back",
+      },
+      {
+        artist: "Faithless",
+        source: "Faithless - Live in Berlin.mp3",
+        start: "30:50:00",
+        title: "Salva Mea",
+      },
+      {
+        artist: "Faithless",
+        source: "Faithless - Live in Berlin.mp3",
+        start: "38:24:00",
+        title: "Dirty Old Man",
+      },
+      {
+        artist: "Faithless",
+        source: "Faithless - Live in Berlin.mp3",
+        start: "42:35:00",
+        title: "God Is a DJ",
+      },
+    ],
+  } as Cue);
 });
