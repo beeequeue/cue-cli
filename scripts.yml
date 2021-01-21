@@ -1,0 +1,27 @@
+allow:
+  - read
+  - write
+  - run
+unstable: true
+
+scripts:
+  dev:
+    cmd: mod.ts
+    watch: true
+    lock: lock.json
+
+  compile:
+    cmd: deno --unstable compile mod.ts --output dist/cue-cli
+
+  lint: deno lint
+
+  reload:
+    cmd: deno run mod.ts
+    reload: true
+    lock: lock.json
+
+  start:
+    cmd: deno run mod.ts
+    lock: lock.json
+
+  test: deno test

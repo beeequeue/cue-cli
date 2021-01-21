@@ -143,6 +143,7 @@ export const parseCue = (content: string): Cue => {
       case "TRACK":
         currentFile = command.index - 1;
 
+        // deno-lint-ignore no-explicit-any
         cue.files[currentFile] ??= {} as any;
         cue.files[currentFile].source = currentSource!;
         break;
@@ -161,6 +162,7 @@ export const parseCue = (content: string): Cue => {
 
       case "REM":
         setOnCorrectTarget({
+          // deno-lint-ignore no-explicit-any
           name: "REM" as any,
           [command.key.toLowerCase()]: command.value,
         } as unknown as Command);
