@@ -41,7 +41,7 @@ FILE "Faithless - Live in Berlin.mp3" MP3
   TRACK 08 AUDIO
     TITLE "God Is a DJ"
     PERFORMER "Faithless"
-    INDEX 01 42:35:00
+    INDEX 01 42:35
 `.trim();
 
 const exampleCommands: BaseCommand[] = [
@@ -142,48 +142,48 @@ Deno.test("getCommand / returns correct command", () => {
         artist: "Faithless",
         composer: "doriko",
         source: "Faithless - Live in Berlin.mp3",
-        start: "00:00:00",
+        start: "00:00",
       },
       {
         artist: "Faithless",
         source: "Faithless - Live in Berlin.mp3",
-        start: "06:42:00",
+        start: "06:42",
         title: "She's My Baby",
       },
       {
         artist: "Faithless",
         source: "Faithless - Live in Berlin.mp3",
-        start: "10:54:00",
+        start: "10:54",
         title: "Take the Long Way Home",
       },
       {
         artist: "Faithless",
         source: "Faithless - Live in Berlin.mp3",
-        start: "17:04:00",
+        start: "17:04",
         title: "Insomnia",
       },
       {
         artist: "Faithless",
         source: "Faithless - Live in Berlin.mp3",
-        start: "25:44:00",
+        start: "25:44",
         title: "Bring the Family Back",
       },
       {
         artist: "Faithless",
         source: "Faithless - Live in Berlin.mp3",
-        start: "30:50:00",
+        start: "30:50",
         title: "Salva Mea",
       },
       {
         artist: "Faithless",
         source: "Faithless - Live in Berlin.mp3",
-        start: "38:24:00",
+        start: "38:24",
         title: "Dirty Old Man",
       },
       {
         artist: "Faithless",
         source: "Faithless - Live in Berlin.mp3",
-        start: "42:35:00",
+        start: "42:35",
         title: "God Is a DJ",
       },
     ],

@@ -24,4 +24,6 @@ scripts:
     cmd: deno run mod.ts
     lock: lock.json
 
-  test: deno test
+  test:
+    cmd: deno test
+    watch: true
