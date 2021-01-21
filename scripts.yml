@@ -13,7 +13,9 @@ scripts:
   compile:
     cmd: deno --unstable compile mod.ts --output dist/cue-cli
 
-  lint: deno lint
+  lint:
+    - deno lint
+    - deno fmt --check
 
   reload:
     cmd: deno run mod.ts
