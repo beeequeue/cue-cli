@@ -8,6 +8,8 @@ TODO
 
 ## Usage
 
+**Requires `ffmpeg` to be available on the PATH.**
+
 ### Split file by `.cue` specification
 
 ```
