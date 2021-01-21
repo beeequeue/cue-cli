@@ -19,20 +19,20 @@ $ cue-cli file.cue
 ## Options
 
 ```
-  Usage:   cue-cli <file:filepath>
-  Version: v0.0.0
+Usage:   cue-cli <file:filepath>
+Version: v0.0.0
 
-  Description:
+Description:
 
-    CLI for splitting audio files according to .cue files.
+  CLI for splitting audio files according to .cue files.
 
-  Options:
+Options:
 
-    -h, --help               - Show this help.
+  -h, --help               - Show this help.
 
-    -V, --version            - Show the version number for this program.
+  -V, --version            - Show the version number for this program.
 
-    -s, --source   <file>    - Override the file to split.
+  -s, --source   <file>    - Override the file to split.
 
-    -o, --output   <folder>  - Output directory.                          (Default: $CWD)
+  -o, --output   <folder>  - Output directory.                          (Default: $CWD)
 ```
