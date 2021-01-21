@@ -24,4 +24,4 @@ jobs:
         run: vr test
 
       - name: Compile
-        run: vr test
+        run: vr compile
