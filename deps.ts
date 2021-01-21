@@ -1,3 +1,7 @@
+export * as Path from "https://deno.land/std@0.84.0/path/mod.ts";
+
+export { exists } from "https://deno.land/std@0.84.0/fs/exists.ts";
+
 export {
   Command,
   Type,

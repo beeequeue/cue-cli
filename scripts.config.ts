@@ -3,6 +3,8 @@ import type { DenonConfig } from "./deps.ts";
 const config: DenonConfig = {
   allow: {
     read: true,
+    write: true,
+    run: true,
   },
   unstable: true,
 
