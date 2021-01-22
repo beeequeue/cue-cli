@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Deno
+        uses: denolib/setup-deno@v2
+        with:
+          deno-version: v1.x
+
+      - name: Install Velociraptor
+        run: deno install -qA -n vr https://deno.land/x/velociraptor@1.0.0-beta.16/cli.ts
+
+      - name: Lint
+        run: vr lint
+
+      - name: Test
+        run: vr test
+
+      - name: Compile
+        run: vr compile
