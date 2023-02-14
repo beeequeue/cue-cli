@@ -9,6 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: 1.x
+
       - uses: actions/cache@v3
         with:
           path: |
@@ -16,11 +21,7 @@ jobs:
             ~/.cache/deno
           key: deno-v1-${{ hashFiles('deno.lock') }}
 
-      - uses: jurassiscripts/setup-velociraptor@v2
-        with:
-          checkout: false
-          deno-version: 1.x
-          velociraptor-version: 1.5.0
+      - run: deno install -qA -n vr https://deno.land/x/velociraptor@1.5.0/cli.ts
 
       - name: Lint
         run: vr lint
