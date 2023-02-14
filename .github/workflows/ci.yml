@@ -7,15 +7,18 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Deno
-        uses: denolib/setup-deno@v2
+        uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
 
-      - name: Install Velociraptor
-        run: deno install -qA -n vr https://deno.land/x/velociraptor@1.0.0-beta.16/cli.ts
+      - uses: jurassiscripts/setup-velociraptor@v2
+        with:
+          checkout: false
+          deno-version: false
+          velociraptor-version: 1.5.0
 
       - name: Lint
         run: vr lint
