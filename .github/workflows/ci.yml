@@ -9,15 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Deno
-        uses: denoland/setup-deno@v1
-        with:
-          deno-version: v1.x
-
       - uses: jurassiscripts/setup-velociraptor@v2
         with:
           checkout: false
-          deno-version: false
+          deno-version: 1.x
           velociraptor-version: 1.5.0
 
       - name: Lint
