@@ -1,31 +1,30 @@
-import { Command, Path } from "../deps.ts";
+import { Command } from "cliffy";
+import * as Path from "path";
 import { parseCue } from "./parser.ts";
 import { ffmpegSplitFile } from "./ffmpeg.ts";
 
-export type Options = {
-  output: string;
-  source?: string;
-};
+const command = new Command()
+  .name("cue-cli")
+  .version("0.0.0")
+  .description("CLI for splitting audio files according to .cue files.")
+  .type("filepath", ({ value }) => Deno.realPathSync(value))
+  .type(
+    "path",
+    ({ value }) =>
+      Path.isAbsolute(value) ? value : Path.join(Deno.cwd(), value),
+  )
+  .arguments("<file:filepath>")
+  .option("-s, --source <file:filepath>", "Override the file to split.")
+  .option(
+    "-o, --output <folder:path>",
+    "Output directory.",
+    { default: Path.join(Deno.cwd(), "out") },
+  );
+
+export type Options = Awaited<ReturnType<typeof command["parse"]>>["options"];
 
 export const runCommand = async () => {
-  const { args, options } = await new Command<Options>()
-    .name("cue-cli")
-    .version("0.0.0")
-    .description("CLI for splitting audio files according to .cue files.")
-    .type("filepath", ({ value }) => Deno.realPathSync(value))
-    .type(
-      "path",
-      ({ value }) =>
-        Path.isAbsolute(value) ? value : Path.join(Deno.cwd(), value),
-    )
-    .arguments("<file:filepath>")
-    .option("-s, --source <file:filepath>", "Override the file to split.")
-    .option(
-      "-o, --output <folder:path>",
-      "Output directory.",
-      { default: Path.join(Deno.cwd(), "out") },
-    )
-    .parse(Deno.args);
+  const { args, options } = await command.parse(Deno.args);
 
   const decoder = new TextDecoder("utf-8");
   const buffer = await Deno.readFile(args[0]);
@@ -35,6 +34,7 @@ export const runCommand = async () => {
 
   if (options.source == null) {
     let lastSource = "";
+
     try {
       cue.files.forEach(({ source }) => {
         lastSource = source;

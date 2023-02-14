@@ -1,4 +1,4 @@
-import { assertEquals } from "../devDeps.ts";
+import { assertEquals } from "asserts";
 import { getCommand, parseCue, parseLine, parsePosition } from "./parser.ts";
 import { BaseCommand, Cue } from "./parser.types.ts";
 

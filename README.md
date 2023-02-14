@@ -4,7 +4,9 @@ A CLI for using `.cue` files.
 
 ## Installation
 
-TODO
+### Deno
+
+`deno install -f -n cue --allow-read --allow-write --allow-run=ffmpeg https://raw.githubusercontent.com/BeeeQueue/cue-cli/main/mod.ts`
 
 ## Usage
 
@@ -34,5 +36,5 @@ Options:
 
   -s, --source   <file>    - Override the file to split.
 
-  -o, --output   <folder>  - Output directory.                          (Default: $CWD)
+  -o, --output   <folder>  - Output directory.                          (Default: $CWD/out)
 ```

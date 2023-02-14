@@ -1,4 +1,4 @@
-import { exists, Path } from "../deps.ts";
+import * as Path from "path";
 import { Cue } from "./parser.types.ts";
 import { Options } from "./command.ts";
 import { isNotFalsy } from "./utils.ts";
@@ -7,9 +7,7 @@ export const ffmpegSplitFile = async (
   cue: Cue,
   { output, source }: Options,
 ) => {
-  if (!await exists(output)) {
-    await Deno.mkdir(output, { recursive: true });
-  }
+  await Deno.mkdir(output, { recursive: true });
 
   const promises = cue.files.map(async (file, index) => {
     const realSource = source ?? file.source;
