@@ -1,0 +1,7 @@
+{
+  "lock": true,
+  "compilerOptions": {
+    "allowJs": false,
+    "lib": ["deno.window", "deno.unstable"]
+  }
+}

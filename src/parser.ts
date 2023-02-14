@@ -119,7 +119,7 @@ export const parseCue = (content: string): Cue => {
   for (let i = 0; i < commands.length; i++) {
     const command = commands[i];
 
-    const setOnCorrectTarget = ({ name, ...data }: Command) => {
+    const setOnCorrectTarget = ({ name: _name, ...data }: Command) => {
       if (currentFile != null) {
         cue.files[currentFile] = {
           ...cue.files[currentFile],

@@ -1,4 +1,5 @@
-import { exists, Path } from "../deps.ts";
+import { extname, join } from "https://deno.land/std@0.177.0/path/mod.ts";
+
 import { Cue } from "./parser.types.ts";
 import { Options } from "./command.ts";
 import { isNotFalsy } from "./utils.ts";
@@ -7,16 +8,14 @@ export const ffmpegSplitFile = async (
   cue: Cue,
   { output, source }: Options,
 ) => {
-  if (!await exists(output)) {
-    await Deno.mkdir(output, { recursive: true });
-  }
+  await Deno.mkdir(output, { recursive: true });
 
   const promises = cue.files.map(async (file, index) => {
     const realSource = source ?? file.source;
     const nextFile = cue.files[index + 1];
 
-    const outputExtension = Path.extname(realSource);
-    const outputFilePath = Path.join(
+    const outputExtension = extname(realSource);
+    const outputFilePath = join(
       output,
       `${index + 1} - ${file.artist} - ${file.title}${outputExtension}`,
     );
