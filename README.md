@@ -6,7 +6,9 @@ A CLI for using `.cue` files.
 
 ### Deno
 
-`deno install -n cue --allow-read --allow-write --allow-run=ffmpeg https://raw.githubusercontent.com/BeeeQueue/cue-cli/main/mod.ts`
+```shell
+deno install -n cue --allow-read --allow-write --allow-run=ffmpeg https://raw.githubusercontent.com/BeeeQueue/cue-cli/main/mod.ts
+```
 
 ## Usage
 
