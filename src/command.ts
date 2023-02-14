@@ -1,5 +1,5 @@
-import { Command } from "https://deno.land/x/cliffy@v0.25.7/command/mod.ts";
-import * as Path from "https://deno.land/std@0.177.0/path/mod.ts";
+import { Command } from "https://deno.land/x/cliffy@v0.25.7/command/command.ts";
+import { isAbsolute, join } from "https://deno.land/std@0.177.0/path/mod.ts";
 
 import { parseCue } from "./parser.ts";
 import { ffmpegSplitFile } from "./ffmpeg.ts";
@@ -11,15 +11,14 @@ const command = new Command()
   .type("filepath", ({ value }) => Deno.realPathSync(value))
   .type(
     "path",
-    ({ value }) =>
-      Path.isAbsolute(value) ? value : Path.join(Deno.cwd(), value),
+    ({ value }) => isAbsolute(value) ? value : join(Deno.cwd(), value),
   )
   .arguments("<file:filepath>")
   .option("-s, --source <file:filepath>", "Override the file to split.")
   .option(
     "-o, --output <folder:path>",
     "Output directory.",
-    { default: Path.join(Deno.cwd(), "out") },
+    { default: join(Deno.cwd(), "out") },
   );
 
 export type Options = Awaited<ReturnType<typeof command["parse"]>>["options"];

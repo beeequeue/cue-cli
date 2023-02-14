@@ -1,4 +1,4 @@
-import * as Path from "https://deno.land/std@0.177.0/path/mod.ts";
+import { extname, join } from "https://deno.land/std@0.177.0/path/mod.ts";
 
 import { Cue } from "./parser.types.ts";
 import { Options } from "./command.ts";
@@ -14,8 +14,8 @@ export const ffmpegSplitFile = async (
     const realSource = source ?? file.source;
     const nextFile = cue.files[index + 1];
 
-    const outputExtension = Path.extname(realSource);
-    const outputFilePath = Path.join(
+    const outputExtension = extname(realSource);
+    const outputFilePath = join(
       output,
       `${index + 1} - ${file.artist} - ${file.title}${outputExtension}`,
     );
