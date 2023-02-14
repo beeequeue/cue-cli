@@ -1,4 +1,4 @@
-# cue-cli
+# .cue CLI tool
 
 A CLI for using `.cue` files.
 
@@ -6,7 +6,7 @@ A CLI for using `.cue` files.
 
 ### Deno
 
-`deno install -f -n cue --allow-read --allow-write --allow-run=ffmpeg https://raw.githubusercontent.com/BeeeQueue/cue-cli/main/mod.ts`
+`deno install -n cue --allow-read --allow-write --allow-run=ffmpeg https://raw.githubusercontent.com/BeeeQueue/cue-cli/main/mod.ts`
 
 ## Usage
 
@@ -15,13 +15,13 @@ A CLI for using `.cue` files.
 ### Split file by `.cue` specification
 
 ```
-$ cue-cli file.cue
+$ cue file.cue
 ```
 
 ## Options
 
 ```
-Usage:   cue-cli <file:filepath>
+Usage:   cue <file:filepath>
 Version: v0.0.0
 
 Description:

@@ -9,7 +9,7 @@ scripts:
     watch: true
 
   compile:
-    cmd: deno --unstable compile mod.ts --output dist/cue-cli
+    cmd: deno --unstable compile mod.ts --output dist/cue
 
   format:
     cmd: deno fmt

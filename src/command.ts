@@ -5,8 +5,8 @@ import { parseCue } from "./parser.ts";
 import { ffmpegSplitFile } from "./ffmpeg.ts";
 
 const command = new Command()
-  .name("cue-cli")
-  .version("0.0.0")
+  .name("cue")
+  .version("1.0.0")
   .description("CLI for splitting audio files according to .cue files.")
   .type("filepath", ({ value }) => Deno.realPathSync(value))
   .type(
