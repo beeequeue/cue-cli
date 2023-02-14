@@ -9,6 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.deno
+            ~/.cache/deno
+          key: deno-v1-${{ hashFiles('deno.lock') }}
+
       - uses: jurassiscripts/setup-velociraptor@v2
         with:
           checkout: false
