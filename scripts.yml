@@ -9,7 +9,10 @@ scripts:
     watch: true
 
   compile:
-    cmd: deno --unstable compile mod.ts --output dist/cue
+    - deno compile --target x86_64-unknown-linux-gnu --output dist/cue-linux-64 mod.ts
+    - deno compile --target x86_64-pc-windows-msvc --output dist/cue-win-64 mod.ts
+    - deno compile --target aarch64-apple-darwin --output dist/cue-mac-64 mod.ts
+    - deno compile --target x86_64-apple-darwin --output dist/cue-mac-arm mod.ts
 
   format:
     cmd: deno fmt
