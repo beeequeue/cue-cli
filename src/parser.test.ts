@@ -1,4 +1,5 @@
-import { assertEquals } from "asserts";
+import { assertEquals } from "https://deno.land/std@0.177.0/testing/asserts.ts";
+
 import { getCommand, parseCue, parseLine, parsePosition } from "./parser.ts";
 import { BaseCommand, Cue } from "./parser.types.ts";
 

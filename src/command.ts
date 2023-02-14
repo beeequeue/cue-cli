@@ -1,5 +1,6 @@
-import { Command } from "cliffy";
-import * as Path from "path";
+import { Command } from "https://deno.land/x/cliffy@v0.25.7/command/mod.ts";
+import * as Path from "https://deno.land/std@0.177.0/path/mod.ts";
+
 import { parseCue } from "./parser.ts";
 import { ffmpegSplitFile } from "./ffmpeg.ts";
 

@@ -1,4 +1,5 @@
-import * as Path from "path";
+import * as Path from "https://deno.land/std@0.177.0/path/mod.ts";
+
 import { Cue } from "./parser.types.ts";
 import { Options } from "./command.ts";
 import { isNotFalsy } from "./utils.ts";
