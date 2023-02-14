@@ -21,7 +21,7 @@ jobs:
             ~/.cache/deno
           key: deno-v1-${{ hashFiles('deno.lock') }}
 
-      - run: deno install -qA -n vr https://deno.land/x/velociraptor@1.5.0/cli.ts
+      - run: deno install -fqA -n vr https://deno.land/x/velociraptor@1.5.0/cli.ts
 
       - name: Lint
         run: vr lint
